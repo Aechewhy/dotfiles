@@ -9,6 +9,12 @@
 [mgr]
 #################################################################################################################
 prepend_keymap = [
+#Confirm quiting
+# {on = [ "q" ] ,run = "plugin confirm-quit", desc = "Confirm before quitting if multiple tabs are open"},
+# Yank to clipboard (X11)
+{ on = "y", run = [ 'shell -- echo "$@" | xclip -i -selection clipboard -t text/uri-list', "yank" ], desc = "Yank + copy to clipboard (X11)" },
+#Diff
+	{on = [ "<C-d>" ] ,run = "plugin diff", desc = "Diff the selected with the hovered file"},
 #Custom shell
 	{on = [ "\\" ] ,run = "plugin custom-shell -- zsh --wait", desc = "custom-shell as default, waits for user"},
 #Git changes
@@ -32,6 +38,7 @@ prepend_keymap = [
 
 #Restore Tabs
     { on = [ "t", "w" ], run = "plugin close-and-restore-tab close_to_left", desc = "Close the current tab and turn to left tab, or quit if it is last tab" },
+    { on = [ "t", "w" ], run = "plugin close-and-restore-tab close_to_right", desc = "Close the current tab and turn to right tab, or quit if it is last tab" },
     { on = [ "t", "r" ], run = "plugin close-and-restore-tab restore", desc = "Restore the closed tab" },
 
 #Bookmarks
@@ -76,8 +83,8 @@ prepend_keymap = [
     { on = ["P", "p"], run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
 
 #Parent arrow
-    { on = "K", run = "plugin parent-arrow --args=-1" },
-    { on = "J", run = "plugin parent-arrow --args=1" },
+    { on = "<C-k>", run = "plugin parent-arrow --args=-1" },
+    { on = "<C-j>", run = "plugin parent-arrow --args=1" },
     { on = "<C-y>", run = "plugin clipboard" },
 # Relative motions
     { on = [ "1" ], run = "plugin relative-motions 1", desc = "Move in relative steps" },
@@ -271,7 +278,7 @@ prepend_keymap = [
 ]
 #################################################################################################################
 keymap = [
-#Restore
+#Restore files
 	{ on = "U", run = "plugin restore", desc = "Restore last deleted files/folders" },
 #Bypass
 	{on = [ "L" ], run = "plugin bypass", desc = "Recursively enter child directory, skipping children with only a single subdirectory"},
@@ -435,14 +442,14 @@ keymap = [
 # Goto
 	{ on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
 	{ on = "G",          run = "arrow 99999999",  desc = "Move cursor to the bottom" },
-	{ on = [ "g", "c" ],       run = "cd C:",     desc = "Go to the C: drive" },
-	{ on = [ "g", "u" ],       run = "shell --orphan -- 'z \\wsl.localhost/Ubuntu-24.04'",     desc = "Go to WSL" },
+	{ on = [ "g", "w" ],       run = "cd /media/huy/72A0F03BA0F006FF",     desc = "Go to Windows" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
-	{ on = [ "g", "o" ],       run = "cd C:/Users/LENOVO~1/ONEDRI~1", desc = "Go to the OneDrive"},
-	{ on = [ "g", "p" ],       run = "cd C:/Users/LENOVO~1/ONEDRI~1/Pictures", desc = "Go to the Pictures"},
-	{ on = [ "g", "D" ],       run = "cd C:/Users/LENOVO~1/ONEDRI~1/Documents", desc = "Go to the Documents"},
-	{ on = [ "g", "s" ],       run = "cd C:/Users/LENOVO~1/ONEDRI~1/Study_Materials", desc = "Go to the study materials"},
+	{ on = [ "g", "p" ],       run = "cd ~/Pictures", desc = "Go to the Pictures"},
+	{ on = [ "g", "D" ],       run = "cd ~/Documents", desc = "Go to the Documents"},
+	{ on = [ "g", "." ],       run = "cd /home/huy/dotfiles", desc = "Go to dotfiles"},
+	{ on = [ "g", "c" ],       run = "cd /home/huy/dotfiles/.config", desc = "Go to dotfiles/.config"},
+	{ on = [ "g", "C" ],       run = "cd /home/huy/.config", desc = "Go to .config"},
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
 
 # Tabs

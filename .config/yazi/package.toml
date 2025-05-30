@@ -108,5 +108,15 @@ use = "AnirudhG07/custom-shell"
 rev = "6b4550a"
 hash = "43019cca17a4d7b41746c2e0a6b8f33f"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "c0ad8a3"
+hash = "4d82cd9e7534d976f000edf9c0f68d8f"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "c0ad8a3"
+hash = "47865a70cade14a0b9b6bc6a54f16bdb"
+
 [flavor]
 deps = []

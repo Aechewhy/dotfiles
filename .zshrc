@@ -111,6 +111,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias python="python3.13"
+alias g="git"
+alias ..="cd .."
+alias ...="cd ..."
+alias n="nvim"
+alias q="exit"
+alias lgit="lazygit"
 eval "$(zoxide init zsh)"
 
 # history setup
